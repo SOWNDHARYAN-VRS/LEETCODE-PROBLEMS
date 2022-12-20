@@ -1,0 +1,81 @@
+53.Given an integer array nums, find the subarray which has the largest sum and return its sum.
+Example 1:
+
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+
+                            *************kadane algorithm***********
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int omaxsum=nums[0],imaxsum=nums[0];
+        for(int i=1;i<nums.length;i++)
+        {
+            imaxsum=Math.max(nums[i],nums[i]+imaxsum);
+            omaxsum=Math.max(imaxsum,omaxsum);
+        }
+        return omaxsum;
+    }
+}
+
+************************************************************************************************************************************************************
+217. Contains Duplicate
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: true
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for(int j=1;j<nums.length;j++)
+            {
+                if(nums[j]==nums[j-1])
+                {
+                    return true;
+                }
+            }
+        return false;
+    }
+}
+************************************************************************************************************************************************************
+// Recursive Java Program to reverse an array
+import java.io.*;
+ 
+class ReverseArray {
+ 
+    /* Function to reverse arr[] from start to end*/
+    static void rvereseArray(int arr[], int start, int end)
+    {
+        int temp;
+        if (start >= end)
+            return;
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        rvereseArray(arr, start+1, end-1);
+    }
+    
+    
+// Iterative java program to reverse an array
+public class GFG {
+     
+   /* Function to reverse arr[] from
+    start to end*/
+    static void rvereseArray(int arr[],int start, int end)
+    {
+        int temp;
+          
+        while (start < end)
+        {
+            temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    
+************************************************************************************************************************************************************
